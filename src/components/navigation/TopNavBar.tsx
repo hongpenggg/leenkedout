@@ -8,6 +8,7 @@ export function TopNavBar() {
 
   const navItems = [
     { path: '/', label: 'Translator' },
+    { path: '/decoder', label: 'Decoder'},
     { path: '/feed', label: 'Feed' },
     { path: '/humble-brag', label: 'Humble Brag' },
     { path: '/saved', label: 'Saved' },

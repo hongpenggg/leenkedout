@@ -96,34 +96,36 @@ export function Translator() {
               <h2 className="font-headline text-xl font-bold text-on-surface">Standard English (The Boring Truth)</h2>
               <span className="text-on-surface-variant text-xs font-label px-3 py-1 bg-surface-container-low rounded-full">RAW INPUT</span>
             </div>
-            <Textarea
-              value={inputText}
-              onChange={(e) => setInputText(e.target.value)}
-              placeholder="e.g., 'I am quitting my job because I'm tired.'"
-              className="flex-1 bg-surface-container-lowest/30 border-none focus:ring-1 focus:ring-primary/50 rounded-xl p-6 text-on-surface placeholder:text-on-surface-variant/40 resize-none font-body text-lg min-h-[200px]"
-            />
+                      <Textarea
+                        value={inputText}
+                        onChange={(e) => setInputText(e.target.value)}
+                        placeholder="e.g., 'I am quitting my job because I'm tired.'"
+                        className="flex-1 bg-surface-container-lowest/30 border-none focus:ring-1 focus:ring-primary/50 rounded-xl p-6 text-on-surface placeholder:text-on-surface-variant/40 resize-none font-body text-lg min-h-[200px]"
+                      />
+                      {/* Action Button — bottom of input panel */}
+                      <div className="mt-6 flex justify-end">
+                        <Button
+                          onClick={handleTranslate}
+                          disabled={loading || !inputText.trim()}
+                          className="group flex items-center gap-3 px-8 py-4 primary-gradient text-on-primary font-headline font-black text-lg rounded-full shadow-glow hover:shadow-glow-lg hover:scale-105 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                          {loading ? (
+                            <>
+                              <span className="material-symbols-outlined animate-spin">refresh</span>
+                              SYNERGIZING...
+                            </>
+                          ) : (
+                            <>
+                              SYNERGIZE
+                              <span className="material-symbols-outlined">auto_awesome</span>
+                            </>
+                          )}
+                        </Button>
+                      </div>
+
           </div>
 
-          {/* Central Action Button */}
-          <div className="lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 z-10 flex justify-center">
-            <Button
-              onClick={handleTranslate}
-              disabled={loading || !inputText.trim()}
-              className="group flex items-center gap-3 px-8 py-6 primary-gradient text-on-primary font-headline font-black text-xl rounded-full shadow-glow hover:shadow-glow-lg hover:scale-105 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {loading ? (
-                <>
-                  <span className="material-symbols-outlined animate-spin">refresh</span>
-                  SYNERGIZING...
-                </>
-              ) : (
-                <>
-                  SYNERGIZE
-                  <span className="material-symbols-outlined">auto_awesome</span>
-                </>
-              )}
-            </Button>
-          </div>
+          
 
           {/* Right Panel: Output */}
           <div className="glass-panel rounded-xl p-8 border border-white/5 shadow-2xl min-h-[400px] flex flex-col relative overflow-hidden">

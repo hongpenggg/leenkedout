@@ -137,3 +137,67 @@ function generateMockHumbleBrag(topic: string): string {
   
   return templates[Math.floor(Math.random() * templates.length)];
 }
+
+export async function decodeLInkedInJunk(text: string): Promise<string> {
+  if (!apiKey || apiKey === 'your_openrouter_api_key_here') {
+    return generateMockDecode(text);
+  }
+
+  try {
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`,
+        'HTTP-Referer': window.location.origin,
+        'X-Title': 'LeenkedOUT',
+      },
+      body: JSON.stringify({
+        model: 'openrouter/free',
+        messages: [
+          {
+            role: 'system',
+            content: `You are a no-bullshit translator. Your job is to take LinkedIn corporate jargon and rewrite it as short, direct, plain English.
+
+Rules:
+- Strip all buzzwords, filler phrases, and corporate speak
+- Be blunt and honest about what is actually being said
+- Keep it SHORT — one or two sentences max
+- No emojis, no hashtags, no fluff
+- If the original text is humble-bragging, call it what it is
+- If it's vague nonsense, say so plainly
+
+Examples:
+- "I'm leaning into my North Star to disrupt the status quo" → "I'm doing something different."
+- "Incredibly humbled to announce I've joined [Company] as VP of Synergy" → "I got a new job."
+- "Excited to share that I'll be speaking at [Event] to 10,000+ leaders" → "I'm giving a talk."
+- "After a period of reflection, I'm pivoting to explore new opportunities" → "I got fired or quit."`,
+          },
+          {
+            role: 'user',
+            content: `Decode this LinkedIn post to plain English: "${text}"`,
+          },
+        ],
+      }),
+    });
+
+    if (!response.ok) throw new Error(`API error: ${response.status}`);
+    const data = await response.json();
+    return data.choices?.[0]?.message?.content || generateMockDecode(text);
+  } catch (error) {
+    console.error('OpenRouter API error:', error);
+    return generateMockDecode(text);
+  }
+}
+
+function generateMockDecode(_text: string): string {
+  const decoded = [
+    "I got a promotion. I'm very pleased with myself.",
+    "I quit my job. I'm calling it a 'journey' so it sounds intentional.",
+    "I got fired. It was unexpected.",
+    "I'm networking because I need something from you.",
+    "I did something normal and I'm pretending it's profound.",
+    "I want you to think I'm important.",
+  ];
+  return decoded[Math.floor(Math.random() * decoded.length)];
+}

@@ -10,6 +10,7 @@ import { Feed } from '@/pages/Feed';
 import { HumbleBrag } from '@/pages/HumbleBrag';
 import { Saved } from '@/pages/Saved';
 import { Toaster } from '@/components/ui/sonner';
+import { Decoder } from '@/pages/Decoder';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth();
@@ -128,6 +129,16 @@ function App() {
               <ProtectedRoute>
                 <AppLayout>
                   <Saved />
+                </AppLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/decode"
+            element={
+              <ProtectedRoute>
+                <AppLayout>
+                  <Decoder />
                 </AppLayout>
               </ProtectedRoute>
             }

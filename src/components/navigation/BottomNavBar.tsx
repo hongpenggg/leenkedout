@@ -7,6 +7,7 @@ export function BottomNavBar() {
 
   const navItems = [
     { path: '/', label: 'Translator', icon: 'translate' },
+    { path:'/decode', label: 'Decode', icon: 'message' },
     { path: '/feed', label: 'Feed', icon: 'reorder' },
     { path: '/humble-brag', label: 'Tools', icon: 'psychology' },
     { path: '/saved', label: 'Saved', icon: 'history' },

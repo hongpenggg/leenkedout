@@ -8,6 +8,7 @@ export function SideNavBar() {
 
   const navItems = [
     { path: '/', label: 'Translator', icon: 'translate' },
+    { path:'/decode', label: 'Decode', icon: 'message' },
     { path: '/feed', label: 'The Feed', icon: 'dynamic_feed' },
     { path: '/humble-brag', label: 'Humble Brag', icon: 'auto_awesome' },
     { path: '/saved', label: 'Saved', icon: 'bookmark' },
