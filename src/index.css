@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 30% 5%;
+    --foreground: 216 30% 93%;
+    --card: 210 25% 8%;
+    --card-foreground: 216 30% 93%;
+    --popover: 210 25% 8%;
+    --popover-foreground: 216 30% 93%;
+    --primary: 197 100% 64%;
+    --primary-foreground: 197 100% 16%;
+    --secondary: 270 100% 75%;
+    --secondary-foreground: 270 100% 18%;
+    --muted: 210 20% 15%;
+    --muted-foreground: 214 10% 68%;
+    --accent: 250 100% 78%;
+    --accent-foreground: 250 100% 22%;
+    --destructive: 1 100% 71%;
+    --destructive-foreground: 0 100% 15%;
+    --border: 210 10% 25%;
+    --input: 210 10% 20%;
+    --ring: 197 100% 64%;
+    --radius: 0.625rem;
+    --sidebar-background: 210 25% 8%;
+    --sidebar-foreground: 216 30% 93%;
+    --sidebar-primary: 197 100% 64%;
+    --sidebar-primary-foreground: 197 100% 16%;
+    --sidebar-accent: 210 20% 15%;
+    --sidebar-accent-foreground: 216 30% 93%;
+    --sidebar-border: 210 10% 25%;
+    --sidebar-ring: 197 100% 64%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    color-scheme: dark;
+  }
+  body {
+    background-color: #090f15;
+    color: #e6ebf4;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    background: rgba(30, 39, 47, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  
+  .glass-card {
+    background: rgba(30, 39, 47, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  
+  .ghost-border {
+    border: 1px solid rgba(66, 72, 80, 0.2);
+  }
+  
+  .primary-gradient {
+    background: linear-gradient(135deg, #48c1ff 0%, #c180ff 100%);
+  }
+  
+  .executive-glow {
+    box-shadow: 0 8px 32px 0 rgba(72, 193, 255, 0.08);
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, #48c1ff 0%, #c180ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@layer utilities {
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  
+  .material-symbols-filled {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  
+  .selection-primary::selection {
+    background: rgba(72, 193, 255, 0.3);
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(30, 39, 47, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(72, 193, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(72, 193, 255, 0.5);
+}
+
+/* Animation for background orbs */
+@keyframes orb-float {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(10px, -10px);
+  }
+  50% {
+    transform: translate(-5px, 15px);
+  }
+  75% {
+    transform: translate(-15px, -5px);
+  }
+}
+
+.orb-animate {
+  animation: orb-float 20s ease-in-out infinite;
+}
