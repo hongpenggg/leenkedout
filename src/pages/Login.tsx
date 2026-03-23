@@ -26,6 +26,10 @@ export function Login() {
     } else {
       navigate('/');
     }
+
+    if (error?.message?.toLowerCase().includes('email not confirmed')) {
+      // show: "Please check your inbox and confirm your email before logging in."
+    }
     
     setLoading(false);
   };
