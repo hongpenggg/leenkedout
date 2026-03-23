@@ -9,3 +9,6 @@ _site/
 
 # local env
 .env.local
+
+dist/
+node_modules/
